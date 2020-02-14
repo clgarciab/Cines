@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://xmlns.jcp.org/jsf/html"
+xmlns:f="http://xmlns.jcp.org/jsf/core"
+xmlns:p ="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Usuario 3</title>
+	<h:outputScript library="js" name="spanishLocale.js"></h:outputScript>
+</h:head>
+	
+<h:body>
+
+	<h:form>
+		<p:messages id="mensaje">
+			<p:autoUpdate></p:autoUpdate>
+		</p:messages>
+	
+		<p:fieldset legend="Datos Personales">		
+			<h:panelGrid columns="2">
+					
+				<p:outputLabel value="Nombre" />
+				<p:inputText value="#{usuarioController.persona.nombre}" required="true" label="Rellene nombre"/>
+				
+				<p:outputLabel value="Apellidos" />
+				<p:inputText value="#{usuarioController.persona.apellidos}"  required="true" label="Rellene apellidos"/>
+				
+				<p:outputLabel value="Sexo" />
+				<p:selectOneRadio value="#{usuarioController.persona.sexo}"  required="true" label="Rellene sexo">
+					<f:selectItem itemValue="M" itemLabel="MASCULINO" />
+					<f:selectItem itemValue="F" itemLabel="FEMENINO" />			
+				</p:selectOneRadio>
+				
+				<p:outputLabel value="Fecha de nacimineto" />
+				<p:calendar locale="es" value="#{usuarioController.persona.fechaNacimiento}"  required="true" label="Rellene fecha"></p:calendar>
+				
+				<p:commandButton icon="ui-icon-check" value="Registrar" />
+							
+			</h:panelGrid>
+		</p:fieldset>	
+		
+		<p:fieldset legend="Datos de la Cuenta">		
+			<h:panelGrid columns="2">
+					
+				<p:outputLabel value="Usuario" />
+				<p:inputText value="#{usuarioController.usuario.usuario}"  required="true" label="Rellene usuario"/>
+				
+				<p:outputLabel value="Clave" />
+				<p:password id="clave1" value="#{usuarioController.usuario.clave}"  
+					required="true" label="Rellene clave"
+					validatorMessage="Las claves no coinciden." weakLabel="Débil" goodLabel="Buena" strongLabel="Fuerte"
+					match="clave2" feedback="true" promptLabel=""/>
+				
+				<p:outputLabel value="Repetir Clave" />
+				<p:password id="clave2" value="#{usuarioController.usuario.clave}"  required="true" label="Rellene clave2"/>
+							
+			</h:panelGrid>
+		</p:fieldset>	
+	</h:form>
+	
+</h:body>
+
+</html>
